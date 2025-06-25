@@ -1,0 +1,38 @@
+---
+import "../styles/global.css";
+import SEO from "../components/SEO.astro";
+import Navbar from "../components/Navbar.astro";
+
+interface Props {
+    title: string;
+    description: string;
+    keywords?: string;
+    ogImage?: string;
+    ogType?: string;
+    canonical?: string;
+    noindex?: boolean;
+    jsonLd?: object;
+}
+
+const {
+    title,
+    description,
+    keywords = '',
+    ogImage = '/og-image.jpg',
+    ogType = 'website',
+    canonical,
+    noindex = false,
+    jsonLd
+} = Astro.props;
+---
+<html lang="es" dir="ltr">
+<head>
+    <SEO {...Astro.props}/>
+</head>
+<body class="bg-primary">
+    <header>
+        <Navbar/>
+    </header>
+    <slot/>
+</body>
+</html>

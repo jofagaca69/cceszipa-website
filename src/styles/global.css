@@ -1,0 +1,25 @@
+@import "tailwindcss";
+
+@theme {
+    --color-white: #F4F4F5;
+    --color-primary: oklch(66.59% 0.185 41.5);
+    --color-primary-50: oklch(95.88% 0.019 29.62);
+    --color-primary-100: oklch(91.81% 0.039 29.71);
+    --color-primary-200: oklch(83.69% 0.083 31.76);
+    --color-primary-300: oklch(74.76% 0.144 35.82);
+    --color-primary-400: oklch(66.59% 0.185 41.5);
+    --color-primary-500: oklch(57.66% 0.161 41.19);
+    --color-primary-600: oklch(48.83% 0.135 41.63);
+    --color-primary-700: oklch(40.76% 0.113 41.23);
+    --color-primary-800: oklch(31.89% 0.088 41.32);
+    --color-primary-900: oklch(23.13% 0.064 40.68);
+    --color-primary-950: oklch(18.2% 0.052 41.14);
+}
+
+/* Estilos base */
+body {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    font-family: 'Inter', sans-serif;
+}
