@@ -1,7 +1,7 @@
 ---
 import "../styles/global.css";
 import { Image } from "astro:assets";
-import CCAMPESTRE from "../../public/logos/LogoHorLetraCafe.svg";
+import CCAMPESTRE from "../images/logos/LogoHorLetraCafe.svg";
 
 interface Props {
     variant?: 'default' | 'transparent' | 'fixed';
@@ -169,7 +169,7 @@ const isActive = (href: string) => {
 }
 
 .navbar__link--active {
-    color: var(--navbar-link-active, #3b82f6);
+    color: var(--color-primary);
     font-weight: 600;
 }
 
@@ -180,7 +180,7 @@ const isActive = (href: string) => {
     left: 0;
     right: 0;
     height: 2px;
-    background: var(--navbar-link-active, #3b82f6);
+    background: var(--color-primary);
     border-radius: 1px;
 }
 
@@ -244,7 +244,7 @@ const isActive = (href: string) => {
         text-align: left;
     }
     .navbar__link--active {
-        background: #2563eb;
+        background: var(--color-primary);
         color: #fff;
     }
     .navbar__link--active::after {
