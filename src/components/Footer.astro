@@ -1,17 +1,17 @@
 ---
 import { Image } from "astro:assets";
-import CCAMPESTRE from "../images/logos/LogoHorLetraCafe.svg";
+import CCAMPESTRE from "../images/logos/CCAMPESTRE.svg";
 ---
-<footer class="rounded-xl mx-4 shadow-xl">
-    <div class="container mx-auto px-4 py-8">
-        <div class="grid grid-cols-1 md:grid-cols-4">
-            <div>
+<footer class="px-4">
+    <div class="rounded-xl px-4 py-8 shadow-xl bg-[#f0f0f0] container mx-auto">
+        <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
+            <div class="border-primary md:border-r-1">
                 <Image
                         src={CCAMPESTRE}
                         alt="Colegio Campestre Exploradores del Saber"
-                        width={200}
+                        width={150}
                         height={100}
-                        class="navbar__logo-img"
+                        class="m-auto"
                 />
                 <p>Km. 5 vía Zipaquirá - Nemocón</p>
                 <p>Vereda La Granja</p>
@@ -19,25 +19,21 @@ import CCAMPESTRE from "../images/logos/LogoHorLetraCafe.svg";
                 <p>(+57) 310 211 9422</p>
                 <p>rectoria@colexploradoresdelsaber.com</p>
             </div>
-            <div>
+            <div class="border-primary md:border-r-1">
                 <h2 class="text-2xl">Institucional</h2>
                 <p class="text-lg">Nuestro Colegio</p>
+                <p class="text-lg">Manual de convivencia</p>
+                <p class="text-lg">Nosotros</p>
+                <p class="text-lg">Política y protección de datos</p>
             </div>
             <div>
-                <h2 class="text-2xl">Institucional</h2>
-                <p class="text-lg">Nuestro Colegio</p>
-            </div>
-            <div>
-                <h2 class="text-2xl">Institucional</h2>
-                <p class="text-lg">Nuestro Colegio</p>
+                <h2 class="text-2xl">Trabaja con nosotros</h2>
+                <p class="text-lg">Postúlate acá</p>
             </div>
         </div>
     </div>
+    <div class="flex flex-col md:flex-row justify-around items-center py-4 bg-primary text-white text-center">
+        <span> &copy; {new Date().getFullYear()} Colegio Campestre Exploradores del Saber </span>
+        <span>Todos los derechos reservados</span>
+    </div>
 </footer>
-
-<style>
-    footer {
-        background: #F4F4F5;
-        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
-    }
-</style>
