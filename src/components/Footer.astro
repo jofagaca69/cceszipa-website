@@ -1,0 +1,43 @@
+---
+import { Image } from "astro:assets";
+import CCAMPESTRE from "../images/logos/LogoHorLetraCafe.svg";
+---
+<footer class="rounded-xl mx-4 shadow-xl">
+    <div class="container mx-auto px-4 py-8">
+        <div class="grid grid-cols-1 md:grid-cols-4">
+            <div>
+                <Image
+                        src={CCAMPESTRE}
+                        alt="Colegio Campestre Exploradores del Saber"
+                        width={200}
+                        height={100}
+                        class="navbar__logo-img"
+                />
+                <p>Km. 5 vía Zipaquirá - Nemocón</p>
+                <p>Vereda La Granja</p>
+
+                <p>(+57) 310 211 9422</p>
+                <p>rectoria@colexploradoresdelsaber.com</p>
+            </div>
+            <div>
+                <h2 class="text-2xl">Institucional</h2>
+                <p class="text-lg">Nuestro Colegio</p>
+            </div>
+            <div>
+                <h2 class="text-2xl">Institucional</h2>
+                <p class="text-lg">Nuestro Colegio</p>
+            </div>
+            <div>
+                <h2 class="text-2xl">Institucional</h2>
+                <p class="text-lg">Nuestro Colegio</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+<style>
+    footer {
+        background: #F4F4F5;
+        box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1);
+    }
+</style>

@@ -47,8 +47,8 @@ import { Image } from "astro:assets";
             </div>
         </div>
     </div>
-    <script is:client="load">
-        import gsap from 'gsap';
+    <script>
+        import { gsap } from 'gsap';
         if (typeof window !== 'undefined') {
             const parallaxItems = document.querySelectorAll('.parallax-deco');
             window.addEventListener('mousemove', (e) => {
