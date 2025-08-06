@@ -1,47 +1,45 @@
-# Astro Starter Kit: Minimal
+# Colegio Campestre Exploradores del Saber
 
-```sh
-npm create astro@latest -- --template minimal
-```
+Plataforma web institucional del Colegio Campestre Exploradores del Saber, ubicado en Zipaquirá, Colombia.
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/minimal)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/minimal)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/minimal/devcontainer.json)
+## 🚀 Descripción del Proyecto
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+Este proyecto es el sitio web oficial del Colegio Campestre Exploradores del Saber, desarrollado con Astro para ofrecer
+una experiencia de usuario óptima y un rendimiento excepcional. El sitio web presenta la propuesta educativa,
+instalaciones y valores de la institución.
 
-## 🚀 Project Structure
+## 🛠️ Tecnologías Utilizadas
 
-Inside of your Astro project, you'll see the following folders and files:
+- [Astro](https://astro.build/) \- Framework web moderno
+- GSAP \- Animaciones fluidas
+- ScrollTrigger \- Efectos de scroll
+- HTML/CSS \- Estructura y estilos
+- TypeScript/Javascript
 
-```text
-/
-├── public/
-├── src/
-│   └── pages/
-│       └── index.astro
-└── package.json
-```
+## 📁 Estructura del Proyecto
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
+La estructura principal del proyecto sigue las convenciones de Astro, con carpetas para componentes, páginas, estilos y
+recursos estáticos.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## 🚩 Instalación y Uso
 
-Any static assets, like images, can be placed in the `public/` directory.
+1. Clona el repositorio:
+   ``` git clone https://github.com/jofagaca69/cceszipa-website.git ```
+2. Instala las dependencias:
+   ``` npm install   ```
+3. Inicia el servidor de desarrollo:
+   ``` npm run dev   ```
 
-## 🧞 Commands
+## 📦 Scripts Disponibles
 
-All commands are run from the root of the project, from a terminal:
+- `npm run dev` \- Inicia el entorno de desarrollo
+- `npm run build` \- Genera la versión de producción
+- `npm run preview` \- Previsualiza la versión de producción
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
+## 🤝 Contribuciones
 
-## 👀 Want to learn more?
+Las contribuciones son bienvenidas. Por favor, abre un issue o pull request para sugerencias o mejoras.
 
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
+## 📄 Licencia
+
+Este proyecto está bajo la licencia MIT.
