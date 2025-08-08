@@ -33,7 +33,10 @@ const ogImageURL = new URL(ogImage, Astro.site);
 <meta name="generator" content={Astro.generator}/>
 
 <!-- SEO Básico -->
-<title>{title}</title>
+{
+    title ? (<title> {title} | Colegio Campestre Exploradores del Saber</title>) : <title>Colegio Campestre Exploradores del Saber</title>
+}
+
 <meta name="description" content={description}/>
 {keywords &&
 <meta name="keywords" content={keywords}/>}

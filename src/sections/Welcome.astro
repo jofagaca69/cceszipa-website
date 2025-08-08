@@ -19,6 +19,7 @@ import { Image } from "astro:assets";
                         width={1000}
                         height={1000}
                         class="rounded-2xl shadow-lg w-full object-cover border-4 border-[#FFA800]/20"
+                        loading="lazy"
                 />
                 <span class="absolute bottom-2 -right-10 max-w-[220px] px-3 py-2 bg-white border border-gray-200 rounded-lg shadow-lg flex justify-center items-center sign">
                         <p class="text-[#E69700] text-2xl font-bold">+250</p>
@@ -36,6 +37,7 @@ import { Image } from "astro:assets";
                         width={1000}
                         height={1000}
                         class="parallax-deco absolute max-w-[81px] top-0 right-0 select-none pointer-events-none"
+                        loading="lazy"
                 />
                 <Image
                         src={DECO_KIDS}
@@ -43,6 +45,7 @@ import { Image } from "astro:assets";
                         width={1000}
                         height={1000}
                         class="parallax-deco absolute max-w-[81px] bottom-0 left-0 select-none pointer-events-none"
+                        loading="lazy"
                 />
             </div>
         </div>
