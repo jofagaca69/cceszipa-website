@@ -1,0 +1,111 @@
+---
+import {fetchGraphQL} from "../lib/wp-client";
+
+interface GalleryImage {
+    node: {
+        sourceUrl: string;
+    };
+}
+
+interface GalleryData {
+    pageBy: {
+        gallery: {
+            image1: GalleryImage;
+            image2: GalleryImage;
+            image3: GalleryImage;
+            image4: GalleryImage;
+            image5: GalleryImage;
+            image6: GalleryImage;
+            image7: GalleryImage;
+            image8: GalleryImage;
+        };
+    };
+}
+
+const GALLERY_QUERY = `
+  query GetGallery {
+    pageBy(uri: "homepage") {
+      gallery {
+        image1 { node { sourceUrl } }
+        image2 { node { sourceUrl } }
+        image3 { node { sourceUrl } }
+        image4 { node { sourceUrl } }
+        image5 { node { sourceUrl } }
+        image6 { node { sourceUrl } }
+        image7 { node { sourceUrl } }
+        image8 { node { sourceUrl } }
+      }
+    }
+  }
+`;
+
+let galleryData: GalleryData | null = null;
+try {
+    galleryData = await fetchGraphQL<GalleryData>(GALLERY_QUERY);
+} catch (error) {
+    console.error("Error fetching gallery data:", error);
+}
+
+const { gallery } = galleryData?.pageBy || {};
+const galleryImages = gallery ? Object.values(gallery).filter(image => image?.node?.sourceUrl) : [];
+---
+
+<h3 class="text-white text-5xl leading-[71px] font-extrabold text-left mx-5">
+    Nuestra galería de fotos
+</h3>
+<div class="mx-5 mb-5">
+    <div class="grid grid-cols-2 grid-rows-10 gap-4 lg:hidden">
+        <div class="row-span-2 shadow-xl">
+            <img class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[0]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-3 col-start-1 row-start-3">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[1]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-2 col-start-1 row-start-6">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[2]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-3 col-start-1 row-start-8">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[3]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-3 col-start-2 row-start-1">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[4]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-2 col-start-2 row-start-4">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[5]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-3 col-start-2 row-start-6">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[6]?.node?.sourceUrl}>
+        </div>
+        <div class="row-span-2 col-start-2 row-start-9">
+            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[7]?.node?.sourceUrl}>
+        </div>
+    </div>
+
+    <div class="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
+        <div class="row-span-2 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[0]?.node?.sourceUrl} alt="">
+        </div>
+
+        <div class="row-span-3 col-start-1 row-start-3 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[1]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-3 col-start-2 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[2]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-2 col-start-2 row-start-4 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[3]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-2 col-start-3 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[4]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-3 col-start-3 row-start-3 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[5]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-3 col-start-4 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[6]?.node?.sourceUrl} alt="">
+        </div>
+        <div class="row-span-2 col-start-4 row-start-4 rounded-lg overflow-hidden group cursor-pointer">
+            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[7]?.node?.sourceUrl} alt="">
+        </div>
+    </div>
+</div>
