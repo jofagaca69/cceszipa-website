@@ -1,0 +1,74 @@
+name: Deploy to Hostinger
+on:
+  push:
+    branches:
+      - main
+  workflow_dispatch: # Permite ejecutar manualmente
+
+jobs:
+  build-and-deploy:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          cache: 'npm'
+
+      - name: Install dependencies
+        run: |
+          npm ci --prefer-offline --no-audit
+          # Alternativa si usas pnpm:
+          # npm install -g pnpm
+          # pnpm install --frozen-lockfile
+
+      - name: Build Astro project
+        run: |
+          npm run build
+          # Verificar que el build se completó
+          ls -la dist/
+
+      - name: Optimize build output
+        run: |
+          # Crear directorio para archivos optimizados
+          mkdir -p optimized_build
+          
+          # Copiar archivos del build
+          cp -r dist/* optimized_build/
+          
+          # Copiar archivos de configuración del servidor
+          cp public/.htaccess optimized_build/
+          cp public/robots.txt optimized_build/
+          
+          # Verificar estructura
+          echo "Estructura del build optimizado:"
+          find optimized_build -type f | head -20
+
+      - name: Deploy to Hostinger via SFTP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASS }}
+          port: 22
+          source: "optimized_build/"
+          target: "public_html"
+          rm: true
+          strip_components: 0
+          overwrite: true
+
+      - name: Verify deployment
+        run: |
+          echo "✅ Deploy completado exitosamente a Hostinger"
+          echo "🌐 URL: https://${{ secrets.SFTP_HOST }}"
+          echo "📁 Archivos desplegados en: public_html/"
+
+      - name: Cleanup
+        if: always()
+        run: |
+          echo "🧹 Limpiando archivos temporales..."
+          rm -rf optimized_build/
+          rm -rf dist/
