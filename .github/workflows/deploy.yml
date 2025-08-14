@@ -53,7 +53,7 @@ jobs:
           host: ${{ secrets.SFTP_HOST }}
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASS }}
-          port: 22
+          port: ${{ secrets.SFTP_PORT }}
           source: "optimized_build/"
           target: "public_html"
           rm: true
