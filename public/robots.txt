@@ -1,0 +1,26 @@
+User-agent: *
+Allow: /
+
+# Sitemap
+Sitemap: https://colexploradoresdelsaber.com/sitemap-index.xml
+
+# Crawl-delay para evitar sobrecargar el servidor
+Crawl-delay: 1
+
+# Permitir acceso a recursos estáticos
+Allow: /_astro/
+Allow: /images/
+Allow: /fonts/
+Allow: /favicon.ico
+Allow: /site.webmanifest
+
+# Bloquear acceso a archivos de configuración
+Disallow: /astro.config.mjs
+Disallow: /vite.config.ts
+Disallow: /tailwind.config.js
+Disallow: /postcss.config.js
+Disallow: /package.json
+Disallow: /package-lock.json
+Disallow: /pnpm-lock.yaml
+Disallow: /tsconfig.json
+Disallow: /README.md
