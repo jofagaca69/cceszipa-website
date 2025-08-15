@@ -12,17 +12,18 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: '18'
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
-
       - name: Install pnpm
         uses: pnpm/action-setup@v4
         with:
           version: 8
+
+      - name: Setup Node.js
+        uses: actions/setup-node@v4
+        with:
+          node-version: '18'
+          # Cache para pnpm
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
 
       - name: Check if lock file exists
         run: |
@@ -59,9 +60,16 @@ jobs:
           # Copiar archivos del build
           cp -r dist/* optimized_build/
           
-          # Copiar archivos de configuración del servidor
-          cp public/.htaccess optimized_build/
-          cp public/robots.txt optimized_build/
+          # Copiar archivos de configuración del servidor (si existen)
+          if [ -f "public/.htaccess" ]; then
+            cp public/.htaccess optimized_build/
+            echo "✅ .htaccess copiado"
+          fi
+          
+          if [ -f "public/robots.txt" ]; then
+            cp public/robots.txt optimized_build/
+            echo "✅ robots.txt copiado"
+          fi
           
           # Verificar estructura
           echo "Estructura del build optimizado:"
@@ -74,16 +82,16 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASS }}
           port: ${{ secrets.SFTP_PORT }}
-          source: "optimized_build/"
-          target: "public_html"
+          source: "optimized_build/*"
+          target: "public_html/"
           rm: true
-          strip_components: 0
+          strip_components: 1
           overwrite: true
 
       - name: Verify deployment
         run: |
           echo "✅ Deploy completado exitosamente a Hostinger"
-          echo "🌐 URL: https://${{ secrets.SFTP_HOST }}"
+          echo "🌐 Sitio desplegado"
           echo "📁 Archivos desplegados en: public_html/"
 
       - name: Cleanup
