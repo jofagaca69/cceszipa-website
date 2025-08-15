@@ -17,5 +17,9 @@
     "graphql-request": "^7.2.0",
     "gsap": "^3.13.0",
     "tailwindcss": "^4.1.10"
+  },
+  "devDependencies": {
+    "autoprefixer": "^10.4.21",
+    "cssnano": "^7.1.0"
   }
 }
