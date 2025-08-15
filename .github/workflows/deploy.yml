@@ -12,71 +12,30 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
+      - name: Build and Deploy with Astro
+        uses: withastro/action@v4
         with:
-          version: 8 # Specify your desired pnpm version
-
-      - name: Setup Node.js
-        uses: actions/setup-node@v4
-        with:
-          node-version: 22 # Or your desired Node.js version
-          cache: 'pnpm' # Enables caching for pnpm
-
-      - name: Install dependencies
-        run: pnpm install --prefer-offline
-
-      - name: Build Astro project
-        run: |
-          astro build
-          # Verificar que el build se completó
-          ls -la dist/
-
-      - name: Optimize build output
-        run: |
-          # Crear directorio para archivos optimizados
-          mkdir -p optimized_build
+          # Configuración del build
+          package-manager: pnpm
+          node-version: 22
           
-          # Copiar archivos del build
-          cp -r dist/* optimized_build/
+          # Configuración del despliegue
+          deploy: true
+          deploy-target: sftp
           
-          # Copiar archivos de configuración del servidor (si existen)
-          if [ -f "public/.htaccess" ]; then
-            cp public/.htaccess optimized_build/
-            echo "✅ .htaccess copiado"
-          fi
+          # Credenciales SFTP
+          sftp-host: ${{ secrets.SFTP_HOST }}
+          sftp-username: ${{ secrets.SFTP_USER }}
+          sftp-password: ${{ secrets.SFTP_PASS }}
+          sftp-port: ${{ secrets.SFTP_PORT }}
+          sftp-remote-path: public_html/
           
-          if [ -f "public/robots.txt" ]; then
-            cp public/robots.txt optimized_build/
-            echo "✅ robots.txt copiado"
-          fi
-          
-          # Verificar estructura
-          echo "Estructura del build optimizado:"
-          find optimized_build -type f | head -20
-
-      - name: Deploy to Hostinger via SFTP
-        uses: appleboy/scp-action@v0.1.7
-        with:
-          host: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USER }}
-          password: ${{ secrets.SFTP_PASS }}
-          port: ${{ secrets.SFTP_PORT }}
-          source: "optimized_build/*"
-          target: "public_html/"
-          rm: true
-          strip_components: 1
-          overwrite: true
+          # Opciones adicionales
+          sftp-remove: true
+          sftp-overwrite: true
 
       - name: Verify deployment
         run: |
           echo "✅ Deploy completado exitosamente a Hostinger"
           echo "�� Sitio desplegado"
           echo "📁 Archivos desplegados en: public_html/"
-
-      - name: Cleanup
-        if: always()
-        run: |
-          echo "�� Limpiando archivos temporales..."
-          rm -rf optimized_build/
-          rm -rf dist/
