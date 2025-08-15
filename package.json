@@ -20,6 +20,7 @@
   },
   "devDependencies": {
     "autoprefixer": "^10.4.21",
-    "cssnano": "^7.1.0"
+    "cssnano": "^7.1.0",
+    "terser": "^5.43.1"
   }
 }
