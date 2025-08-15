@@ -18,15 +18,14 @@ jobs:
           package-manager: pnpm
           node-version: 22
 
-      - name: Deploy to Hostinger via FTP
-        uses: SamKirkland/FTP-Deploy-Action@v4.3.0
+      - name: Deploy via FTP
+        uses: SamKirkland/FTP-Deploy-Action@v4.3.4
         with:
-          server: ${{ secrets.SFTP_HOST }}
-          username: ${{ secrets.SFTP_USER }}
-          password: ${{ secrets.SFTP_PASS }}
-          port: ${{ secrets.SFTP_PORT }}
-          local-dir: "dist/"
-          server-dir: "public_html/"
+          server: ${{ secrets.FTP_HOST }}
+          username: ${{ secrets.FTP_USER }}
+          password: ${{ secrets.FTP_PASS }}
+          local-dir: ./dist
+          server-dir: /public_html/
 
       - name: Verify deployment
         run: |
