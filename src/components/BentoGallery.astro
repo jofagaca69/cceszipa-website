@@ -1,5 +1,6 @@
 ---
 import {fetchGraphQL} from "../lib/wp-client";
+import { Image } from "astro:assets";
 
 interface GalleryImage {
     node: {
@@ -56,56 +57,56 @@ const galleryImages = gallery ? Object.values(gallery).filter(image => image?.no
 <div class="mx-5 mb-5">
     <div class="grid grid-cols-2 grid-rows-10 gap-4 lg:hidden">
         <div class="row-span-2 shadow-xl">
-            <img class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[0]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[0]?.node?.sourceUrl} alt="" width={400} height={300} />
         </div>
         <div class="row-span-3 col-start-1 row-start-3">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[1]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[1]?.node?.sourceUrl} width={400} height={450} />
         </div>
         <div class="row-span-2 col-start-1 row-start-6">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[2]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[2]?.node?.sourceUrl} width={400} height={300} />
         </div>
         <div class="row-span-3 col-start-1 row-start-8">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[3]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[3]?.node?.sourceUrl} width={400} height={450} />
         </div>
         <div class="row-span-3 col-start-2 row-start-1">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[4]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[4]?.node?.sourceUrl} width={400} height={450} />
         </div>
         <div class="row-span-2 col-start-2 row-start-4">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[5]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[5]?.node?.sourceUrl} width={400} height={300} />
         </div>
         <div class="row-span-3 col-start-2 row-start-6">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[6]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[6]?.node?.sourceUrl} width={400} height={450} />
         </div>
         <div class="row-span-2 col-start-2 row-start-9">
-            <img alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[7]?.node?.sourceUrl}>
+            <Image alt="gallery" class="block object-cover object-center w-full h-full rounded-lg" src={galleryImages[7]?.node?.sourceUrl} width={400} height={300} />
         </div>
     </div>
 
     <div class="hidden lg:grid grid-cols-4 grid-rows-5 gap-4">
         <div class="row-span-2 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[0]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[0]?.node?.sourceUrl} alt="" width={300} height={240} />
         </div>
 
         <div class="row-span-3 col-start-1 row-start-3 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[1]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[1]?.node?.sourceUrl} alt="" width={300} height={360} />
         </div>
         <div class="row-span-3 col-start-2 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[2]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[2]?.node?.sourceUrl} alt="" width={300} height={360} />
         </div>
         <div class="row-span-2 col-start-2 row-start-4 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[3]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[3]?.node?.sourceUrl} alt="" width={300} height={240} />
         </div>
         <div class="row-span-2 col-start-3 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[4]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[4]?.node?.sourceUrl} alt="" width={300} height={240} />
         </div>
         <div class="row-span-3 col-start-3 row-start-3 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[5]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[5]?.node?.sourceUrl} alt="" width={300} height={360} />
         </div>
         <div class="row-span-3 col-start-4 row-start-1 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[6]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[6]?.node?.sourceUrl} alt="" width={300} height={360} />
         </div>
         <div class="row-span-2 col-start-4 row-start-4 rounded-lg overflow-hidden group cursor-pointer">
-            <img class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[7]?.node?.sourceUrl} alt="">
+            <Image class="block object-cover object-center w-full h-full rounded-lg transition-transform duration-300 ease-in-out group-hover:scale-110" src={galleryImages[7]?.node?.sourceUrl} alt="" width={300} height={240} />
         </div>
     </div>
 </div>
