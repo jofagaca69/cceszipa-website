@@ -28,7 +28,7 @@ jobs:
 
       - name: Build Astro project
         run: |
-          pnpm run build
+          astro build
           # Verificar que el build se completó
           ls -la dist/
 
