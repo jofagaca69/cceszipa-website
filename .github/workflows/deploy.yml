@@ -12,17 +12,16 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Specify your desired pnpm version
+
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 22 # Or your desired Node.js version
           cache: 'pnpm' # Enables caching for pnpm
-
-      - name: Setup pnpm
-        uses: pnpm/action-setup@v3
-        with:
-          version: 8 # Specify your desired pnpm version
-          run_install: true # Automatically runs pnpm install
 
       - name: Install dependencies
         run: pnpm install --frozen-lockfile --prefer-offline
@@ -72,12 +71,12 @@ jobs:
       - name: Verify deployment
         run: |
           echo "✅ Deploy completado exitosamente a Hostinger"
-          echo "🌐 Sitio desplegado"
+          echo "�� Sitio desplegado"
           echo "📁 Archivos desplegados en: public_html/"
 
       - name: Cleanup
         if: always()
         run: |
-          echo "🧹 Limpiando archivos temporales..."
+          echo "�� Limpiando archivos temporales..."
           rm -rf optimized_build/
           rm -rf dist/
