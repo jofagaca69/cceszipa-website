@@ -18,7 +18,7 @@ jobs:
           package-manager: pnpm
           node-version: 22
 
-      - name: Deploy to Hostinger via SFTP
+      - name: Deploy to Hostinger via FTP
         uses: SamKirkland/FTP-Deploy-Action@v4.3.0
         with:
           server: ${{ secrets.SFTP_HOST }}
@@ -31,5 +31,4 @@ jobs:
       - name: Verify deployment
         run: |
           echo "✅ Deploy completado exitosamente a Hostinger"
-          echo "�� Sitio desplegado"
-          echo "📁 Archivos desplegados en: public_html/"
+          echo " Sitio desplegado"
