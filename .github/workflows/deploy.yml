@@ -25,7 +25,7 @@ jobs:
           username: ${{ secrets.SFTP_USER }}
           password: ${{ secrets.SFTP_PASS }}
           port: ${{ secrets.SFTP_PORT }}
-          local-dir: "dist/*"
+          local-dir: "dist/"
           server-dir: "public_html/"
 
       - name: Verify deployment
