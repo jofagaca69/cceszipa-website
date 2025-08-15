@@ -12,39 +12,20 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Install pnpm
-        uses: pnpm/action-setup@v4
-        with:
-          version: 8
-
       - name: Setup Node.js
         uses: actions/setup-node@v4
         with:
-          node-version: '18'
-          # Cache para pnpm
-          cache: 'pnpm'
-          cache-dependency-path: '**/pnpm-lock.yaml'
+          node-version: '22.11.0' # Or your desired Node.js version
+          cache: 'pnpm' # Enables caching for pnpm
 
-      - name: Check if lock file exists
-        run: |
-          if [ -f "pnpm-lock.yaml" ]; then
-            echo "✅ pnpm-lock.yaml encontrado"
-            ls -la pnpm-lock.yaml
-          else
-            echo "❌ pnpm-lock.yaml no encontrado"
-            echo "Archivos en directorio raíz:"
-            ls -la
-          fi
+      - name: Setup pnpm
+        uses: pnpm/action-setup@v3
+        with:
+          version: 8 # Specify your desired pnpm version
+          run_install: true # Automatically runs pnpm install
 
       - name: Install dependencies
-        run: |
-          # Si tienes pnpm-lock.yaml, usa pnpm install --frozen-lockfile
-          if [ -f "pnpm-lock.yaml" ]; then
-            pnpm install --frozen-lockfile
-          else
-            # Si no tienes lock file, usa pnpm install
-            pnpm install
-          fi
+        run: pnpm install --frozen-lockfile --prefer-offline
 
       - name: Build Astro project
         run: |
