@@ -12,27 +12,24 @@ jobs:
       - name: Checkout code
         uses: actions/checkout@v4
 
-      - name: Build and Deploy with Astro
+      - name: Build with Astro
         uses: withastro/action@v4
         with:
-          # Configuración del build
           package-manager: pnpm
           node-version: 22
-          
-          # Configuración del despliegue
-          deploy: true
-          deploy-target: sftp
-          
-          # Credenciales SFTP
-          sftp-host: ${{ secrets.SFTP_HOST }}
-          sftp-username: ${{ secrets.SFTP_USER }}
-          sftp-password: ${{ secrets.SFTP_PASS }}
-          sftp-port: ${{ secrets.SFTP_PORT }}
-          sftp-remote-path: public_html/
-          
-          # Opciones adicionales
-          sftp-remove: true
-          sftp-overwrite: true
+
+      - name: Deploy to Hostinger via SFTP
+        uses: appleboy/scp-action@v0.1.7
+        with:
+          host: ${{ secrets.SFTP_HOST }}
+          username: ${{ secrets.SFTP_USER }}
+          password: ${{ secrets.SFTP_PASS }}
+          port: ${{ secrets.SFTP_PORT }}
+          source: "dist/*"
+          target: "public_html/"
+          rm: true
+          strip_components: 1
+          overwrite: true
 
       - name: Verify deployment
         run: |
