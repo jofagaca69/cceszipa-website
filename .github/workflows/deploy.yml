@@ -24,7 +24,7 @@ jobs:
           cache: 'pnpm' # Enables caching for pnpm
 
       - name: Install dependencies
-        run: pnpm install --frozen-lockfile --prefer-offline
+        run: pnpm install --prefer-offline
 
       - name: Build Astro project
         run: |
