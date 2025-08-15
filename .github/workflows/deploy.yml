@@ -16,18 +16,38 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: '18'
-          cache: 'npm'
+          cache: 'pnpm'
+          cache-dependency-path: '**/pnpm-lock.yaml'
+
+      - name: Install pnpm
+        uses: pnpm/action-setup@v4
+        with:
+          version: 8
+
+      - name: Check if lock file exists
+        run: |
+          if [ -f "pnpm-lock.yaml" ]; then
+            echo "✅ pnpm-lock.yaml encontrado"
+            ls -la pnpm-lock.yaml
+          else
+            echo "❌ pnpm-lock.yaml no encontrado"
+            echo "Archivos en directorio raíz:"
+            ls -la
+          fi
 
       - name: Install dependencies
         run: |
-          npm ci --prefer-offline --no-audit
-          # Alternativa si usas pnpm:
-          # npm install -g pnpm
-          # pnpm install --frozen-lockfile
+          # Si tienes pnpm-lock.yaml, usa pnpm install --frozen-lockfile
+          if [ -f "pnpm-lock.yaml" ]; then
+            pnpm install --frozen-lockfile
+          else
+            # Si no tienes lock file, usa pnpm install
+            pnpm install
+          fi
 
       - name: Build Astro project
         run: |
-          npm run build
+          pnpm run build
           # Verificar que el build se completó
           ls -la dist/
 
