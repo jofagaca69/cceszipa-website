@@ -1,41 +1,77 @@
 ---
 import { Image } from "astro:assets";
 import CCAMPESTRE from "../images/logos/CCAMPESTRE.svg";
+import { NAVITEMS } from "../config/navItems";
+import { getCurrentPath, isLinkActive } from "../lib/navigation";
+
+const navItems = NAVITEMS;
 ---
+
 <footer class="px-4">
     <div class="rounded-xl px-4 py-8 shadow-xl bg-[#f0f0f0] container mx-auto">
         <div class="grid grid-cols-1 md:grid-cols-3 gap-3">
-            <div class="border-primary md:border-r-1">
+            <!-- Información de contacto -->
+            <div class="border-primary md:border-r-1 pr-4">
                 <Image
                         src={CCAMPESTRE}
                         alt="Colegio Campestre Exploradores del Saber"
                         width={150}
                         height={100}
-                        class="m-auto"
+                        class="m-auto mb-4"
                         loading="lazy"
                 />
-                <p>Km. 5 vía Zipaquirá - Nemocón</p>
-                <p>Vereda La Granja</p>
+                <div class="space-y-1 text-center md:text-left">
+                    <p>Km. 5 vía Zipaquirá - Nemocón</p>
+                    <p>Vereda La Granja</p>
+                    <p class="font-semibold">(+57) 310 211 9422</p>
+                    <p>
+                        <a
+                                href="mailto:rectoria@colexploradoresdelsaber.com"
+                                class="text-primary hover:underline"
+                        >
+                            rectoria@colexploradoresdelsaber.com
+                        </a>
+                    </p>
+                </div>
+            </div>
 
-                <p>(+57) 310 211 9422</p>
-                <p>rectoria@colexploradoresdelsaber.com</p>
+            <!-- Enlaces institucionales -->
+            <div class="border-primary md:border-r-1 pr-4">
+                <h2 class="text-2xl font-bold mb-4">Institucional</h2>
+                <nav>
+                    <ul class="space-y-2">
+                        {navItems.map(item => (
+                                <li>
+                                    <a
+                                            href={item.href}
+                                            class="text-gray-700 hover:text-primary transition-colors duration-200 hover:underline"
+                                    >
+                                    {item.name}
+                                    </a>
+                                </li>
+                        ))}
+                    </ul>
+                </nav>
             </div>
-            <div class="border-primary md:border-r-1">
-                <h2 class="text-2xl">Institucional</h2>
-                <p class="text-lg">Nuestro Colegio</p>
-                <p class="text-lg">Manual de convivencia</p>
-                <p class="text-lg">Nosotros</p>
-                <p class="text-lg">Política y protección de datos</p>
-            </div>
+
+            <!-- Trabajo -->
             <div>
-                <h2 class="text-2xl">Trabaja con nosotros</h2>
-                <p class="text-lg">Postúlate acá</p>
+                <h2 class="text-2xl font-bold mb-4">Trabaja con nosotros</h2>
+                <p class="text-lg mb-3">¿Quieres ser parte de nuestro equipo?</p>
+                <a
+                        href="/trabaja-con-nosotros"
+                        class="inline-block bg-primary text-white px-4 py-2 rounded-lg hover:bg-primary/90 transition-colors duration-200"
+                >
+                    Postúlate acá
+                </a>
             </div>
         </div>
     </div>
-    <div class="container mx-auto flex-1 px-4 py-2">
-        <div class="flex flex-col md:flex-row justify-around items-center py-4 bg-primary text-white text-center">
-            <span> &copy; {new Date().getFullYear()} Colegio Campestre Exploradores del Saber </span>
+
+    <!-- Copyright -->
+    <div class="container mx-auto px-4 py-2">
+        <div class="flex flex-col md:flex-row justify-around items-center py-4 bg-transparent text-white text-center rounded-lg">
+            <span>&copy; {new Date().getFullYear()} Colegio Campestre Exploradores del Saber</span>
             <span>Todos los derechos reservados</span>
         </div>
     </div>

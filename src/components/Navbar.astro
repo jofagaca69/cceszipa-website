@@ -2,6 +2,8 @@
 import "../styles/global.css";
 import { Image } from "astro:assets";
 import CCAMPESTRE from "../images/logos/LogoHorLetraCafe.svg";
+import {NAVITEMS} from "../config/navItems";
+import {getCurrentPath, isLinkActive} from "../lib/navigation";
 
 interface Props {
     variant?: 'default' | 'transparent' | 'fixed';
@@ -10,24 +12,13 @@ interface Props {
 const { variant = 'default' } = Astro.props;
 
 // Obtener la ruta actual
-const currentPath = Astro.url.pathname;
+const currentPath = getCurrentPath(Astro.url);
 
 // Definir las rutas de navegación
-const navItems = [
-    { name: 'Inicio', href: '/', ariaLabel: 'Ir a la página de inicio' },
-    { name: 'Conócenos', href: '/conocenos', ariaLabel: 'Conocer más sobre mí' },
-    { name: 'Cursos', href: '/crusos', ariaLabel: 'Ver mis proyectos' },
-    { name: 'Cronograma', href: '/cronograma', ariaLabel: 'Leer el blog' },
-    { name: 'Comunicados', href: '/comunicados', ariaLabel: 'Ponerse en contacto' },
-    { name: 'Galería', href: '/galeria', ariaLabel: 'Ponerse en contacto' }
-];
+const navItems = NAVITEMS;
 
 // Función para determinar si un enlace está activo
-const isActive = (href: string) => {
-    if (href === '/' && currentPath === '/') return true;
-    if (href !== '/' && currentPath.startsWith(href)) return true;
-    return false;
-};
+const isActive = (href: string) => isLinkActive(href, Astro.url);
 ---
 
 <nav class={`navbar navbar--${variant} my-4 mx-4 rounded-xl shadow-xl`} role="navigation" aria-label="Navegación principal">
