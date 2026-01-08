@@ -33,12 +33,7 @@ const HERO_QUERY = `
     }
 `;
 
-let heroData: HeroData | null = null;
-try {
-    heroData = await fetchGraphQL<HeroData>(HERO_QUERY);
-} catch (error) {
-    console.error('Error fetching hero data:', error);
-}
+const heroData = await fetchGraphQL<HeroData>(HERO_QUERY);
 
 // Imagen de respaldo si no hay imagen en WordPress
 const defaultBg = "/default-hero.jpg"; // Pon aquí la ruta de tu imagen por defecto en /public
