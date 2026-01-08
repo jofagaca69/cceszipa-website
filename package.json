@@ -9,9 +9,9 @@
     "astro": "astro"
   },
   "dependencies": {
-    "@astrojs/sitemap": "^3.4.1",
+    "@astrojs/sitemap": "^3.6.0",
     "@tailwindcss/vite": "^4.1.10",
-    "astro": "^5.10.1",
+    "astro": "^5.16.5",
     "astro-htaccess": "^0.2.3",
     "astro-robots-txt": "^1.0.0",
     "graphql-request": "^7.2.0",
